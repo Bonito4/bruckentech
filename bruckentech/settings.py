@@ -35,6 +35,9 @@ DEBUG = os.getenv('DEBUG', 'True').lower() in ('true', '1', 'yes')
 
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
 
+# Strip whitespace from allowed hosts (important for comma-separated values)
+ALLOWED_HOSTS = [host.strip() for host in ALLOWED_HOSTS]
+
 
 # Application definition
 
