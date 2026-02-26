@@ -25,12 +25,15 @@ load_dotenv(BASE_DIR / '.env')
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-38s0-%jnu@0a0^cuqk$2s(t^zv93m-1aqdy6_pcj%3f^3gkjz&'
+SECRET_KEY = os.getenv(
+    'SECRET_KEY',
+    'django-insecure-38s0-%jnu@0a0^cuqk$2s(t^zv93m-1aqdy6_pcj%3f^3gkjz&'  # fallback for dev only
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEBUG', 'True').lower() in ('true', '1', 'yes')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
 
 
 # Application definition
@@ -133,6 +136,7 @@ FLUTTERWAVE_IDP_URL = 'https://idp.flutterwave.com/realms/flutterwave/protocol/o
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # additional locations for user‑defined static assets
 STATICFILES_DIRS = [
