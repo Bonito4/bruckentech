@@ -33,7 +33,7 @@ SECRET_KEY = os.getenv(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'True').lower() in ('true', '1', 'yes')
 
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1,bruckentech-ug.onrender.com').split(',')
 
 # Strip whitespace from allowed hosts (important for comma-separated values)
 ALLOWED_HOSTS = [host.strip() for host in ALLOWED_HOSTS]
@@ -124,11 +124,9 @@ USE_TZ = True
 
 
 # Flutterwave configuration – set these in the environment (e.g. via .env or your server)
-# FLUTTERWAVE_SECRET_KEY is required for server‑side API calls. A public key is not
-# needed in this simple flow, but you might also keep one for client‑side widgets.
+# Using OAuth2 token-based authentication (client_id + client_secret)
+# FLUTTERWAVE_SECRET_KEY is disabled; we use OAuth2 credentials instead
 import os
-
-FLUTTERWAVE_SECRET_KEY = os.getenv('FLUTTERWAVE_SECRET_KEY', '')
 
 # Flutterwave OAuth2 credentials for accessing APIs
 FLUTTERWAVE_CLIENT_ID = os.getenv('client_id', '')
