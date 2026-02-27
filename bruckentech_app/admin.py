@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Article
+from .models import Article, Page
 from markdownx.admin import MarkdownxModelAdmin
 
 
@@ -18,3 +18,11 @@ class ArticleAdmin(MarkdownxModelAdmin, admin.ModelAdmin):
 		return ""
 
 	image_tag.short_description = 'Image'
+
+@admin.register(Page)
+class PageAdmin(MarkdownxModelAdmin, admin.ModelAdmin):
+    list_display = ('title', 'slug', 'published', 'created_at')
+    list_filter = ('published',)
+    search_fields = ('title', 'body')
+    prepopulated_fields = {'slug': ('title',)}
+    readonly_fields = ('created_at', 'updated_at')

@@ -4,6 +4,26 @@ from django.utils.safestring import mark_safe
 from markdown import markdown
 
 
+class Page(models.Model):
+    title = models.CharField(max_length=255)
+    slug = models.SlugField(max_length=255, unique=True)
+    body = models.TextField(help_text="Main content in Markdown")
+    published = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ["slug"]
+
+    def __str__(self):
+        return self.title
+
+    def body_html(self):
+        return mark_safe(markdown(self.body or "", extensions=["extra", "sane_lists"]))
+
+
+
+
 class Article(models.Model):
 	title = models.CharField(max_length=255)
 	slug = models.SlugField(max_length=255, unique=True, blank=True)
