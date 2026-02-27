@@ -124,15 +124,20 @@ USE_I18N = True
 USE_TZ = True
 
 
-# Flutterwave configuration – set these in the environment (e.g. via .env or your server)
-# Using OAuth2 token-based authentication (client_id + client_secret)
-# FLUTTERWAVE_SECRET_KEY is disabled; we use OAuth2 credentials instead
-import os
-
-# Flutterwave OAuth2 credentials for accessing APIs
-FLUTTERWAVE_CLIENT_ID = os.getenv('client_id', '')
-FLUTTERWAVE_CLIENT_SECRET = os.getenv('client_secret', '')
-FLUTTERWAVE_IDP_URL = 'https://idp.flutterwave.com/realms/flutterwave/protocol/openid-connect/token'
+# Account details shown in the "Account Details" page. Configure these via
+# environment variables (or override here for development).
+ACCOUNT_DETAILS = {
+    'bank': {
+        'bank_name': os.getenv('BANK_NAME', 'Example Bank'),
+        'account_name': os.getenv('BANK_ACCOUNT_NAME', 'Bruckentech Foundation'),
+        'account_number': os.getenv('BANK_ACCOUNT_NUMBER', '0000000000'),
+    },
+    'mobile_money': {
+        'provider': os.getenv('MM_PROVIDER', 'MTN Mobile Money'),
+        'number': os.getenv('MM_NUMBER', '+256700000000'),
+        'account_name': os.getenv('MM_ACCOUNT_NAME', 'Bruckentech Foundation'),
+    }
+}
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/

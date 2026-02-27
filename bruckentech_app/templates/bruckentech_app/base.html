@@ -67,12 +67,13 @@
                     <a class="text-sm font-semibold hover:text-primary transition-colors" href="{% url 'home' %}">Home</a>
                     <a class="text-sm font-semibold hover:text-primary transition-colors" href="{% url 'about_us' %}">About Us</a>
                     <a class="text-sm font-semibold hover:text-primary transition-colors" href="{% url 'programs' %}">Programs</a>
+                    <a class="text-sm font-semibold hover:text-primary transition-colors" href="{% url 'articles_list' %}">Articles</a>
                     <a class="text-sm font-semibold hover:text-primary transition-colors" href="{% url 'agency' %}">Digital Agency</a>
                     <span class="text-sm font-semibold text-slate-500/80" aria-disabled="true" title="Donations are coming soon — thank you for your interest">Get Involved (coming soon)</span>
                     <a class="text-sm font-semibold hover:text-primary transition-colors" href="{% url 'action' %}">Contact</a>
                 </div>
                 <div class="flex items-center gap-4">
-                    <span class="bg-primary/80 text-background-dark font-bold px-6 py-2 rounded-lg transition-all shadow-lg shadow-primary/20 opacity-70 cursor-not-allowed" aria-disabled="true" title="Donations are being updated — thank you for your interest">Donate (coming soon)</span>
+                    <a class="bg-primary/80 text-background-dark font-bold px-6 py-2 rounded-lg transition-all shadow-lg shadow-primary/20 hover:opacity-90" href="{% url 'account_details' %}">Account Details</a>
                     <button id="mobile-menu-toggle" class="md:hidden text-slate-900 dark:text-slate-100 p-2">
                         <span class="material-symbols-outlined">menu</span>
                     </button>
@@ -86,6 +87,7 @@
                 <a class="block py-2 px-4 text-sm font-semibold hover:text-primary transition-colors" href="{% url 'agency' %}">Digital Agency</a>
                 <span class="block py-2 px-4 text-sm font-semibold text-slate-500/80" aria-disabled="true" title="Donations coming soon">Get Involved (coming soon)</span>
                 <a class="block py-2 px-4 text-sm font-semibold hover:text-primary transition-colors" href="{% url 'action' %}">Contact</a>
+                <a class="block py-2 px-4 text-sm font-semibold hover:text-primary transition-colors" href="{% url 'account_details' %}">Account Details</a>
             </div>
         </div>
     </nav>
